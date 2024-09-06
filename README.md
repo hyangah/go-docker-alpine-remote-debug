@@ -1,3 +1,32 @@
+This is forked from github.com/ccampo133/go-docker-alpine-remote-debug for
+testing delve DAP testing. It assumes there is a checked out copy of delve
+under the `delve` directory. Let's assume you checked out this repo in
+$WORKDIR.
+
+```
+git clone https://github.com/hyangah/go-docker-alpine-remote-debug $WORKDIR
+cd $WORKDIR
+
+git clone https://github.com/go-delve/delve
+cd delve
+git fetch upstream pull/3781/head
+go build ./cmd/dlv
+```
+
+From the $WORKDIR, running the `dlv substitue-path-guess-helper` gave me:
+
+```
+./delve/dlv substitute-path-guess-helper
+{"ModuleDirectories":{"github.com/ccampo133/go-docker-alpine-remote-debug":"/usr/local/google/home/hakim/projects/go-docker-alpine-remote-debug"}}
+```
+
+Update `ClientMod2Dir` attribute in `$WORKDIR/.vscode/launch.json`.
+
+Read the "Dockerfile" to see how the container is built.
+
+Then, follow the remaining instruction below.
+
+
 # go-docker-alpine-remote-debug
 
 A simple example on how to enable remote debugging using [Delve](https://github.com/go-delve/delve) 

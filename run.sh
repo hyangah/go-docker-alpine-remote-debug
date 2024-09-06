@@ -5,7 +5,7 @@
 cmd="/bin/app"
 if [ "$REMOTE_DEBUG_PORT" ]; then
   echo "Starting application with remote debugging on port $REMOTE_DEBUG_PORT"
-  dlvFlags="--listen=:$REMOTE_DEBUG_PORT --headless=true --log --api-version=2 --accept-multiclient"
+  dlvFlags="--listen=:$REMOTE_DEBUG_PORT --headless=true --log --api-version=2 --accept-multiclient --log-output=dap,debugger"
   execFlags=""
   # Simply setting this environment variable is enough to force the debugger to
   # pause on start --- we don't care about the value.
